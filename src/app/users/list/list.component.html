@@ -1,11 +1,37 @@
-<div class="card-columns">
+<div class="text-center alert alert-success" role="alert" *ngIf="loading">
+    <h4 class="alert-heading">Espere!</h4>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <p class="mb-0"> <i class="fa fa-2x fa-spin fa-sync"></i> </p>
+        </div>
+        <div class="col">
+            <p class="mb-0"> <i class="fa fa-2x fa-spin fa-sync"></i> </p>
+        </div>
+        <div class="col">
+            <p class="mb-0"> <i class="fa fa-2x fa-spin fa-sync"></i> </p>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="error">
+    <h4 class="alert-heading"><i class="fa fa-times"></i> Error!</h4>
+    <p>Mensaje: {{ error.message }}</p>
+    <p></p>
+    <hr>
+    <p class="mb-0">Url: {{ error.url }}</p>
+</div>
+
+<div class="card-columns" *ngIf="!loading">
     <div class="card " *ngFor="let user of users ">
         <img [src]=" user.avatar " class="card-img-top ">
         <div class="card-body ">
             <h5 class="card-title ">{{ user.first_name }} {{ user.last_name }}</h5>
             <p class="card-text ">This is a longer card with supporting </p>
             <span class="text-muted ">
-            {{user.id}}
+            <button  (click)="goUser( user.id )" type="button" class="btn btn-primary" 
+            > {{ user.id }} Usuario </button>
+
         </span>
         </div>
     </div>

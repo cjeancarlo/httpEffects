@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
+
+import { AppState } from 'src/app/store/app.reducer';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,10 +17,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  goUser(id: string) {
-    console.log(id);
-    this.router.navigate(['user', id]);
-    
+  goUser(id: number) {
+   this.router.navigate(['user', id]);
   }
 
 }

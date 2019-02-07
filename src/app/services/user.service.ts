@@ -12,8 +12,14 @@ private readonly URL = 'https://reqres.in/api';
 
 constructor(private http: HttpClient ) { }
 
-getUsers( ) {
-  return this.http.get(`${ this.URL}/users?per_page=6`)
+
+getUser(id) {
+  return this.getUsers(id);
+}
+
+getUsers( id  = null ) {
+const  innerUrl = id ? `users/${id}` : 'users?per_page=6';
+return this.http.get(`${ this.URL}/${innerUrl}`)
   .pipe(
     map( ( resp: any )  => resp.data )
   );
